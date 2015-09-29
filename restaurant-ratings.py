@@ -1,5 +1,31 @@
 # your code goes here
 
+def get_user_review(restaurant_dict):
+    """Prompts the user to enter a new restaurant rating pair.
+    """
+
+    print "Enter the name of the restaurant you'd like to review:"
+    rest_entry = raw_input("> ")
+
+    print "Enter a rating from 1 to 5:"
+    rating_entry = int(raw_input("> "))
+
+    user_entered_pair = (rest_entry, rating_entry)
+    add_user_review(user_entered_pair, restaurant_dict)
+
+    print restaurant_dict
+    return
+     # (rest_entry, rating_entry)
+
+
+def add_user_review(user_entered_pair, restaurant_dict):
+    """Takes a tuple from user and converts into dictionary entry.
+    """    
+    restaurant_dict[user_entered_pair[0]] = user_entered_pair[1]
+
+    return restaurant_dict
+
+
 def make_restaurant_dict(filename):
     """Opens a file of ratings and converts pairs into a dictionary.
     """
@@ -33,4 +59,7 @@ def print_sorted_restaurants(restaurant_dict):
 
 restaurant_dict = make_restaurant_dict("scores.txt")
 print_sorted_restaurants(restaurant_dict)
+
+get_user_review(restaurant_dict)
+
 # print restaurant_dict
