@@ -1,4 +1,5 @@
 # your code goes here
+import random
 
 def get_user_review(restaurant_dict):
     """Prompts the user to enter a new restaurant rating pair.
@@ -25,6 +26,20 @@ def add_user_review(user_entered_pair, restaurant_dict):
 
     return restaurant_dict
 
+
+def updates_random_entry(restaurant_dict):
+    """Ask user for new rating for random restaurant in dictionary.
+    """
+    print "Hello. What is your name?"
+    user_name = raw_input("> ")
+    sorted_restaurants = sorted(restaurant_dict)
+    rand_rest = sorted_restaurants[random.randint(0,len(sorted_restaurants))]
+    print "Thanks, {}. Let's update the rating for {}.".format(user_name, rand_rest)
+    print "Enter a rating from 1 to 5:"
+    new_rating = raw_input("> ")
+    restaurant_dict[rand_rest] = new_rating
+
+    return
 
 def make_restaurant_dict(filename):
     """Opens a file of ratings and converts pairs into a dictionary.
@@ -60,6 +75,7 @@ def print_sorted_restaurants(restaurant_dict):
 restaurant_dict = make_restaurant_dict("scores.txt")
 print_sorted_restaurants(restaurant_dict)
 
-get_user_review(restaurant_dict)
+# get_user_review(restaurant_dict)
+updates_random_entry(restaurant_dict)
 
-# print restaurant_dict
+print restaurant_dict
